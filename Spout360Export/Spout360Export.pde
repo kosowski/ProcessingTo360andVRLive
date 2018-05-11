@@ -35,7 +35,6 @@ import spout.*;
 
 
   public void draw() {
-    
     strokeWeight(0);
     noStroke();
     
@@ -43,10 +42,10 @@ import spout.*;
     exporter.drawCubeMap(pg);
     popMatrix();
 
-    image(pg,0,0);
-//    surface.setTitle("FPS: " + (int) frameRate);
+    image(pg,0,0, width, height);
+    surface.setTitle("FPS: " + (int) frameRate);
     
-    // send it via spout. For some reason, sharing the default buffer either through sendTexture() or sendTexture(this.g) kill the frame rate 
+    // send it via spout. For some reason, sharing the default buffer either through sendTexture() or sendTexture(this.g) kills the frame rate 
     spout.sendTexture(pg);
   }
 
@@ -55,11 +54,10 @@ import spout.*;
     Put your shapes/objects and lights here to be drawn to the screen
    */
   public void drawScene() {  
-    background(200);
+    background(40);
     pointLight(100, 0, 0,  0, 0, 20);              // under red light
-    pointLight(51, 153, 153,  0, -50, 150);              // over teal light
-    pointLight(124, 124, 124,  0, 0, 00); // mid light gray light
-
+    pointLight(51, 153, 153,  0, -50, 150);        // over teal light
+    pointLight(124, 124, 124,  0, 0, 00);          // mid light gray light
 
     // draw spinning boxes around point (0,0,0)
     float radius = 100f;
@@ -77,7 +75,7 @@ import spout.*;
       translate(x, y, z);
       rotateY(frameCount * 0.02 + i * PI/10);
       rotateZ(frameCount * 0.02 + i * PI/10);
-      box(10);
+      box(20);
       popMatrix();
     }
   }
